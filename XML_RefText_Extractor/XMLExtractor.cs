@@ -8,6 +8,9 @@ namespace XML_RefText_Extractor
     {
         public IEnumerable<XElement> ExtracAll(string xmlInput, string[] refCodeFilter)
         {
+            if (string.IsNullOrEmpty(xmlInput))//Check for empty message.
+                return Enumerable.Empty<XElement>();
+
             XDocument document = XDocument.Parse(xmlInput);
             
             IEnumerable<XElement> filtered = from el in document.Element("InputDocument").Element("DeclarationList").Element("Declaration").Element("DeclarationHeader").Elements("Reference")

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using XML_RefText_Extractor;
@@ -105,6 +106,19 @@ namespace XML_RefText_ExtractorUnitTests
 
             XMLExtractor extractor = new XMLExtractor();
             IEnumerable<XElement> result = extractor.ExtracAll(xmlInput, refCodeFilter);
+
+            TestResponse(expectedResponse, result);
+
+        }
+        [TestMethod]
+        public void TestWithEmptyXML()
+        {
+
+            string[] refCodeFilter = new[] { "" };
+            IList<string> expectedResponse = new List<string>();
+
+            XMLExtractor extractor = new XMLExtractor();
+            IEnumerable<XElement> result = extractor.ExtracAll("", refCodeFilter);
 
             TestResponse(expectedResponse, result);
 
