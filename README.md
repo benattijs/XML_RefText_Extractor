@@ -44,7 +44,7 @@ Taking the following XML document, write code to extract the RefText values for 
 				<Country CodeType=""NUM"" CountryType=""Destination"">IE</Country>
 				<Country CodeType=""NUM"" CountryType=""Dispatch"">CN</Country>
 			</DeclarationHeader>
-		
+		</Declaration>
 	</DeclarationList>
 </InputDocument>
 ```
@@ -60,6 +60,7 @@ The output is an Array containing the RefText elements corresponding to the RefC
 1. Considered the fact that the the RefCodes to be extracted could be different on different executions.
 2. Considered that the message could be received in blank.
 3. Considered that the RefCode to be returned would change with different requests. Added parameter for the tags to be filtered. 
+4. The original XML provided was missing the cloure of the  `<Declaration>` tag. That have been added to the XML used for tests.
 
 ## Code documentation
 Project is divided and 2 projects:
